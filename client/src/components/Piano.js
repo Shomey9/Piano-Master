@@ -13,7 +13,7 @@ function Piano(props) {
     }
 
     props.pianoData(passInfo)
-
+    
     return (
         <div className="piano">
             {NOTES.map((note, index)=> {

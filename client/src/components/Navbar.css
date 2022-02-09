@@ -1,0 +1,29 @@
+.Navbar{
+    /* background-color: white; */
+    position: relative;
+    left: 0px;
+    top: 30px;
+   
+    margin-top: 0px;
+    padding: 0px;
+    align-items: right;
+}
+.title{
+    position: relative;
+    right: 300px;
+    font: Blippo, fantasy
+}
+.Navbaritems{
+    display: inline-block;
+}
+.flagItems{
+    display: inline-block;
+    margin-right: 10px;
+}
+.flag{
+    width: 50px;
+    height: auto;
+}
+.language{
+    font-size:10px;
+}
