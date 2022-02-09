@@ -8,7 +8,7 @@ function Piano(props) {
     // const [pressedKeys, setPressedKeys] = useState([]);
     const [passInfo, setPassInfo] = useState("")
     const dataFromKey = (keyData) => {
-        // console.log("Data from Keys: ", keyData)
+        console.log("Data from Keys: ", keyData)
         setPassInfo(keyData) 
     }
 

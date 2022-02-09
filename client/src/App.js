@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './App.css';
 import MusicNotes from './components/MusicNotes'
 import Piano from './components/Piano.js';
@@ -7,19 +7,24 @@ import Navbar from './components/Navbar.js';
 
 function App() {
   const [testAnswer, setTestAnswer] = useState("")
+  console.log("testAnswer: ", testAnswer)
   const [userAnswer, setUAnswer] = useState("")
+  console.log("userAnswer: ", userAnswer)
+  const [pressedKey, setPressedKey] = useState(false)
+  console.log("pressedKey: ", pressedKey)
   
 
   const dataFromPiano = (pianoData) => {
     console.log("Data from Piano: ", pianoData)
     setUAnswer(pianoData)
+    // setPressedKey(!pressedKey)
   }
   const dataFromMusicNotes = (musicNotesData) => {
     console.log("Data from MusicNotes: ", musicNotesData)
     setTestAnswer(musicNotesData)
   }
  
-
+  //Make a ternary that 
   return (
     <div className="App">
       <header className="App-header">
@@ -31,6 +36,25 @@ function App() {
         />
         <div>
         {
+          // pressedKey ? 
+          //   <div>
+          //     {testAnswer === userAnswer
+          //         ?
+          //         (
+          //         <p>Correct!</p>
+          //         )
+          //           :
+          //         (
+          //           <p>Incorrect!</p>
+          //         )
+          //     }
+          //   </div>
+          //     :
+          //   <div>
+          //     <br></br><br></br>
+          //   </div>
+
+
           testAnswer === userAnswer 
             ?
           (

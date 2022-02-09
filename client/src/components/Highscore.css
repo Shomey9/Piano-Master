@@ -1,0 +1,12 @@
+.highscoreTest{
+    position: relative;
+    
+}
+.highScore{
+    position: relative;
+    bottom: 60px;
+}
+.highScoresContainers{
+    position: relative;
+    bottom: 60px;
+}

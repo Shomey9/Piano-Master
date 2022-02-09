@@ -1,12 +1,11 @@
 .Navbar{
     /* background-color: white; */
-    position: relative;
-    left: 0px;
-    top: 30px;
-   
-    margin-top: 0px;
-    padding: 0px;
-    align-items: right;
+    display: flex;
+    justify-content: space-between;
+    
+    
+
+    
 }
 .title{
     position: relative;
@@ -16,14 +15,22 @@
 .Navbaritems{
     display: inline-block;
 }
+.login{
+    position: relative;
+    top: 31px;
+    left: 300px;
+    margin-right: 5px;
+}
+
 .flagItems{
     display: inline-block;
     margin-right: 10px;
+
 }
 .flag{
     width: 50px;
     height: auto;
 }
-.language{
+/* .language{
     font-size:10px;
-}
+} */

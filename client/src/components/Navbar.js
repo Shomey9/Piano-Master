@@ -3,7 +3,7 @@ import './Navbar.css'
 
 function Navbar(){
     const [flag, setFlag] = useState("")
-    console.log(flag)
+    // console.log(flag)
     useEffect(()=>{
         fetch("https://countryflagsapi.com/svg/826")
         .then(r=>setFlag(r))
@@ -23,11 +23,11 @@ function Navbar(){
             </div>
 
             <div className="Navbaritems">
-                <label>Username:</label>
+                <label className="login">Username:</label>
                 <input className="login"></input>
-                <label>Password:</label>
+                <label className="login">Password:</label>
                 <input className="login"></input>
-                <button>X</button>
+                <button className="login">Login</button>
             </div>
             
         </form>

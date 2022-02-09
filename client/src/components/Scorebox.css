@@ -6,3 +6,8 @@
     width: 300px;
     border: 2px solid black;
 }
+.scoreButton {
+    position:relative;
+    top: 160px;
+    left: 130px;
+}
