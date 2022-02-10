@@ -1,27 +1,34 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Key.css'
 
 function Key(props) {
 
     const [keyColor, setColor] = useState(0)
-    const [pressedKey, setPressedKey] = useState("")
-    // console.log(pressedKey)
+    // const [key, setKey] = useState("")
+    // console.log("key: ", key)
     // const whatDidIPress = () => {
     //     return props.note
     // }
     // console.log(whatDidIPress())
 
+
+
     const handleClick = () => {
-        setPressedKey(props.note.toUpperCase())
         setColor(1);
+        props.keyData(props.note.toUpperCase())
         setTimeout(()=>
             {
                 setColor(0)
             }, 100
         );
+        
     }
+
+    // useEffect(()=>{
+    //     setSomething(props.note.toUpperCase())
+    // }, [])
     
-    props.keyData(pressedKey)
+    
     
     return (
         <div>

@@ -15,12 +15,17 @@ function App() {
   
 
   const dataFromPiano = (pianoData) => {
-    console.log("Data from Piano: ", pianoData)
+    console.log("Data from Piano Component: ", pianoData)
     setUAnswer(pianoData)
-    // setPressedKey(!pressedKey)
+    setPressedKey(true)
+    setTimeout(()=>
+    {
+        setPressedKey(false)
+    }, 2000
+);
   }
   const dataFromMusicNotes = (musicNotesData) => {
-    console.log("Data from MusicNotes: ", musicNotesData)
+    console.log("Data from MusicNotes Component: ", musicNotesData)
     setTestAnswer(musicNotesData)
   }
  
@@ -36,34 +41,37 @@ function App() {
         />
         <div>
         {
-          // pressedKey ? 
-          //   <div>
-          //     {testAnswer === userAnswer
-          //         ?
-          //         (
-          //         <p>Correct!</p>
-          //         )
-          //           :
-          //         (
-          //           <p>Incorrect!</p>
-          //         )
-          //     }
-          //   </div>
-          //     :
-          //   <div>
-          //     <br></br><br></br>
-          //   </div>
+          pressedKey ? 
+            <div>
+              {/* <p>I am pressed</p> */}
+              {testAnswer === userAnswer
+                  ?
+                  (
+                  <p>Correct!</p>
+                  )
+                    :
+                  (
+                    <p>Incorrect!</p>
 
 
-          testAnswer === userAnswer 
-            ?
-          (
-            <p>Correct!</p>
-          )
-            :
-          (
-            <p>Incorrect!</p>
-          )
+                  )
+              }
+            </div>
+              :
+            <div>
+              <br></br><br></br>
+            </div>
+
+
+          // testAnswer === userAnswer 
+          //   ?
+          // (
+          //   <p>Correct!</p>
+          // )
+          //   :
+          // (
+          //   <p>Incorrect!</p>
+          // )
         }
         </div>
         <Piano 

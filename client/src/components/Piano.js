@@ -6,13 +6,12 @@ import {NOTES} from '../global/constants.js';
 
 function Piano(props) {
     // const [pressedKeys, setPressedKeys] = useState([]);
-    const [passInfo, setPassInfo] = useState("")
     const dataFromKey = (keyData) => {
-        console.log("Data from Keys: ", keyData)
-        setPassInfo(keyData) 
+        props.pianoData(keyData)
+        console.log("Data from Keys Component: ", keyData);
     }
 
-    props.pianoData(passInfo)
+    
     
     return (
         <div className="piano">
@@ -26,7 +25,7 @@ function Piano(props) {
                     />
                 )
             })}
-        </div>
+        </div>  
     );
 }
 
