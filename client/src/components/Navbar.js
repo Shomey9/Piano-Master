@@ -14,7 +14,7 @@ function Navbar(){
     return (
         <form className="Navbar">
             <div className="Navbaritems">
-                <p className="title">Ady's Piano School</p>
+                <p className="title">Piano Master</p>
             </div>
 
             <div className="Navbaritems">

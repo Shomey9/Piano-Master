@@ -29,7 +29,7 @@ function App() {
     setTestAnswer(musicNotesData)
   }
  
-  //Make a ternary that 
+  
   return (
     <div className="App">
       <header className="App-header">
