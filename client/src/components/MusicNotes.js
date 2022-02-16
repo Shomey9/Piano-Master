@@ -61,6 +61,7 @@ function MusicNotes(props) {
             } */}
 
             <img 
+                className="musicImage"
                 src={
                     generateNoteImage[0]
                 } 

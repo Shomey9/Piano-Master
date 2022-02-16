@@ -62,7 +62,7 @@ function App() {
         <div>
         {
           pressedKey ? 
-            <div>
+            <div className="indicator">
               {/* <p>I am pressed</p> */}
               {testAnswer === userAnswer
                   ?
@@ -78,8 +78,8 @@ function App() {
               }
             </div>
               :
-            <div>
-              <br></br><br></br>
+            <div className="indicator">
+              
             </div>
 
 
