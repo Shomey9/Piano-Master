@@ -21,7 +21,10 @@
     left: 300px;
     margin-right: 5px;
 }
-
+#loginLink{
+    position: relative;
+    font-size: 15px;
+}
 .flagItems{
     display: inline-block;
     margin-right: 10px;
