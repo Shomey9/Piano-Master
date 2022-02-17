@@ -2,42 +2,42 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 function SignUp({ setCurrentUser }) {
-  const [formData, setFormData] = useState({
-    username: "",
-    password: ""
-  });
+//   const [formData, setFormData] = useState({
+//     username: "",
+//     password: ""
+//   });
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+//   const handleChange = (e) => {
+//     setFormData({ ...formData, [e.target.name]: e.target.value });
+//   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
 
-    const configObj = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    };
+//     const configObj = {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify(formData),
+//     };
 
-    fetch("/users", configObj).then((resp) => {
-      if (resp.ok) {
-        resp.json().then((user) => {
-          console.log(user);
-          setCurrentUser(user);
-        });
-      } else {
-        resp.json().then((errors) => {
-          console.error(errors);
-        });
-      }
-    });
-  };
+//     fetch("/users", configObj).then((resp) => {
+//       if (resp.ok) {
+//         resp.json().then((user) => {
+//           console.log(user);
+//           setCurrentUser(user);
+//         });
+//       } else {
+//         resp.json().then((errors) => {
+//           console.error(errors);
+//         });
+//       }
+//     });
+//   };
   return (
-    <div>
-      <form className="loginForm"onSubmit={handleSubmit}>
+    <div className="login">
+      {/* <form className="loginForm"onSubmit={handleSubmit}>
         <h1>Sign Up</h1>
         <p>
           <label htmlFor="username">Username </label>
@@ -75,7 +75,8 @@ function SignUp({ setCurrentUser }) {
         <p>
           <Link to="/">Log In</Link>
         </p>
-      </form>
+      </form> */}
+      
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import './App.css';
 import MusicNotes from './components/MusicNotes'
@@ -11,19 +11,30 @@ function App() {
 
 
   const [testAnswer, setTestAnswer] = useState("")
-  console.log("testAnswer: ", testAnswer)
+  // console.log("testAnswer: ", testAnswer)
   const [userAnswer, setUAnswer] = useState("")
-  console.log("userAnswer: ", userAnswer)
+  // console.log("userAnswer: ", userAnswer)
   const [pressedKey, setPressedKey] = useState(false)
-  console.log("pressedKey: ", pressedKey)
+  // console.log("pressedKey: ", pressedKey)
   const [image, setImage] = useState(false)
-  console.log("Image state: ", image)
+  // console.log("Image state: ", image)
+  const [score, setScore] = useState(0)
   
-  
-  
+  // useEffect(()=>{
+  //   if (testAnswer == userAnswer) {
+  //     // setScore(score + 10)
+  //     console.log("Please Record Score")
+  //     // const x = score + 10
+  //     // setScore(x)
+  //     // console.log("Score: ", score)
+  //   } else {
+  //     console.log("Please Don't Record Score")
+  //   }
+  // }, [])
+
 
   const dataFromPiano = (pianoData) => {
-    console.log("Data from Piano Component: ", pianoData)
+    // console.log("Data from Piano Component: ", pianoData)
     setUAnswer(pianoData)
     setPressedKey(true)
     setTimeout(()=>
@@ -35,21 +46,50 @@ function App() {
     //  
   }
 
-  // const changeImage = () => {
-  //   if (testAnswer == userAnswer) {
-  //     console.log("Please Change Image")
-      
-  //   } else {
-  //     console.log("Please Don't Change Image")
+  // if (testAnswer == userAnswer) {
+  //   // setScore(score + 10)
+  //   console.log("Please Record Score")
+  //   // const x = score + 10
+  //   // setScore(x)
+  //   // console.log("Score: ", score)
+  // } else {
+  //   console.log("Please Don't Record Score")
+  // }
+
+  // async const recordScore = () => {
+  //   const response = await userAnswer
+  // }
+
+  // This promise is fulfilled with the return value from the async func, so this logs 1
+  // Promise.then(console.log("My promise: ", testAnswer))
+
+  // const recordScore = () => {
+
+    
+
+  // }
+  
+  
+
+  // const gameScore = () => {
+  //   for (let i = 0; i < 10; i++) {
+  //     if ()
   //   }
   // }
 
+
   const dataFromMusicNotes = (musicNotesData) => {
-    console.log("Data from MusicNotes Component: ", musicNotesData)
+    // console.log("Data from MusicNotes Component: ", musicNotesData)
     setTestAnswer(musicNotesData)
   }
- 
-  //Make a ternary that 
+
+  // async const handleClick = () => {
+  //   setScore(score + 1)
+  //   console.log("score: ", score)
+  // }
+
+  // handleClick().then(score=>setScore(score + 1))
+  
   return (
     <div className="App">
       <header className="App-header">
@@ -67,11 +107,11 @@ function App() {
               {testAnswer === userAnswer
                   ?
                   (
-                  <p>Correct!</p>
+                  <p>Correct, note was {testAnswer}!</p>
                   )
                     :
                   (
-                    <p>Incorrect!</p>
+                    <p>Incorrect, note was {testAnswer}!</p>
 
 
                   )
@@ -96,6 +136,7 @@ function App() {
         </div>
         <Piano 
           pianoData={dataFromPiano}
+          // onClick={handleClick}
         />
 
 

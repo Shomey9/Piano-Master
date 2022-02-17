@@ -8,13 +8,13 @@ function Piano(props) {
     // const [pressedKeys, setPressedKeys] = useState([]);
     const dataFromKey = (keyData) => {
         props.pianoData(keyData)
-        console.log("Data from Keys Component: ", keyData);
+        // console.log("Data from Keys Component: ", keyData);
     }
 
     
     
     return (
-        <div className="piano">
+        <div onClick={props.onClick} className="piano">
             {NOTES.map((note, index)=> {
                 return(
                     <Key 

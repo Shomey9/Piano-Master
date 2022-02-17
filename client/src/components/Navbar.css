@@ -25,6 +25,21 @@
     position: relative;
     font-size: 15px;
 }
+#signupTitle{
+    position: relative;
+    font-size: 15px;
+}
+#loginStatus{
+    position: relative;
+    top: -20px;
+    font-size: 15px;
+}
+#yourLoggedIn{
+    position: relative;
+    top: 0px;
+    font-size: 30px;
+}
+
 .flagItems{
     display: inline-block;
     margin-right: 10px;
