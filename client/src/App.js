@@ -32,6 +32,20 @@ function App() {
   //   }
   // }, [])
 
+  const playAudio = () => {
+    const audio = new Audio(
+      `${userAnswer.toLowerCase()}.mp3`
+    )
+    // audio.duration = 0.2
+    // audio.addEventListener('loadeddata', () => {
+    //   let duration = audio.duration
+    //   duration = 0.2
+    // })
+    audio.play();
+  }
+  if (pressedKey) {
+    playAudio()
+  }
 
   const dataFromPiano = (pianoData) => {
     // console.log("Data from Piano Component: ", pianoData)

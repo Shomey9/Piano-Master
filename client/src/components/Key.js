@@ -11,8 +11,6 @@ function Key(props) {
     // }
     // console.log(whatDidIPress())
 
-
-
     const handleClick = () => {
         setColor(1);
         props.keyData(props.note.toUpperCase())
