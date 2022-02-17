@@ -21,10 +21,11 @@ function Navbar(){
     // const [click, setClick] = useState(false)
     // console.log(click)
 
-    const [currentUser, setCurrentUser] = useState("Nobody")
+    const [currentUser, setCurrentUser] = useState("Ady")
     console.log("Current user logged in: ", currentUser)
     const [authenticated, setAuthenticated] = useState(false)
-    
+    console.log("Authentication Status: ", authenticated)
+
     useEffect(()=>{
         fetch(
             "/users"
@@ -34,18 +35,23 @@ function Navbar(){
             r=>console.log(r)
         )
 
-        // fetch("/users", {
-        //         credentials: "include", 
-        // }).then((res)=>{
-        //     if (res.ok) {
-        //         res.json().then((user)=>{
-        //             setCurrentUser(user);
-        //             setAuthenticated(true)
-        //         })
-        //     } else {
-        //             setAuthenticated(true)
-        //         }
-        //     })
+        fetch(
+            "/me"
+            , {
+                credentials: "include"
+            }
+        ).then(
+            r=>{
+                if (r.ok) {
+                    r.json().then((user)=>{
+                        setCurrentUser(user);
+                        setAuthenticated(true)
+                    })
+                } else {
+                    // setAuthenticated(true)  
+                }
+            }
+        )
 
         fetch(
             "https://countryflagsapi.com/svg/826"
@@ -57,20 +63,40 @@ function Navbar(){
     //         <div></div>
     //     )
     // }
-
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value })
+    }
     
-    // console.log(flag)
-    // useEffect(()=>{
-        
-    // },[])
+    const handleLoginSubmit = (e) => {
+        const configObj = {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+          };
+          e.preventDefault();
+          fetch("/login", configObj).then((resp) => {
+            if (resp.ok) {
+              resp.json().then((user) => {
+                setCurrentUser(user);
+              });
+            } else {
+              resp.json().then((errors) => {
+                console.error(errors);
+              });
+            }
+          });
+    }
     const displayLoginForm = (e) => { // 1
         e.preventDefault()
         setDisplayLogin(false)
         setDisplaySignUp(true)
         setLogStatus(false)
-    }
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value })
+        setFormData({
+            username: "",
+            password: ""
+        })
     }
     const handleLoginFormSubmit = (e) => { // 2
         e.preventDefault()
@@ -85,30 +111,39 @@ function Navbar(){
             "/users", configObj
         ).then(
             (r)=>{
-                if (r.ok) {
-                    r.json().then(
-                        (user)=>{
-                            setCurrentUser(user)
-                        }
-                    )
-                } else {
-                    r.json().then(
-                        (errors)=>{
-                            console.error(errors)
-                        }
-                    )
-                }
+                r.json()
+                // if (r.ok) {
+                //     r.json().then(
+                //         (user)=>{
+                //             setCurrentUser(user)
+                //         }
+                //     )
+                // } else {
+                //     r.json().then(
+                //         (errors)=>{
+                //             console.error(errors)
+                //         }
+                //     )
+                // }
             }
         )
         setDisplayLogin(true)
         setDisplaySignUp(false)
         setLogStatus(false)
+        setFormData({
+            username: "",
+            password: ""
+        })
     }
     const displayLogout = (e) => { // 3
         e.preventDefault()
         setDisplayLogin(true)
         setDisplaySignUp(false)
         setLogStatus(false)
+        setFormData({
+            username: "",
+            password: ""
+        })
     }
     const displayLoginStatus = (e) => { // 4
         e.preventDefault()
@@ -116,13 +151,6 @@ function Navbar(){
         setDisplaySignUp(false)
         setLogStatus(true)
     }
-
-    
-    
-    
-
-
-    
     return (
         <div className="Navbar">
             <div className="Navbaritems">
@@ -142,13 +170,15 @@ function Navbar(){
                         )
                         :
                         (
-                            <form>
+                            <form onSubmit={handleLoginSubmit}>
                                 <label className="login">Username:</label>  
                                 <input 
                                     className="login"
                                     type="text"
                                     name="username"
-                                    
+                                    value={formData.username}
+                                    onChange={(e)=>handleChange(e)}
+                                    autocomplete="off"
                                     >
                                 </input>
                                 <label className="login">Password:</label>
@@ -156,6 +186,9 @@ function Navbar(){
                                     className="login"
                                     type="password"
                                     name="password"
+                                    value={formData.password}
+                                    onChange={(e)=>handleChange(e)}
+                                    autocomplete="off"
                                     >
                                 </input>
                                 <button className="login"
@@ -179,13 +212,14 @@ function Navbar(){
                         )
                         :
                         (
-                            <form>
+                            <form onSubmit={handleLoginFormSubmit}>
                                 <label className="login">Username:</label>
                                         <input 
                                             className="login"
                                             name="username"
                                             value={formData.username}
                                             onChange={(e)=>handleChange(e)}
+                                            autocomplete="off"
                                             >
                                         </input>
                                         <label className="login">Password:</label>
@@ -194,11 +228,12 @@ function Navbar(){
                                             name="password"
                                             value={formData.password}
                                             onChange={(e)=>handleChange(e)}
+                                            autocomplete="off"
                                             >
                                         </input>
                                         <button 
                                             className="login"
-                                            onClick={handleLoginFormSubmit}
+                                            type="submit"
                                             >Signup
                                         </button>
                             </form>
@@ -228,59 +263,10 @@ function Navbar(){
                         )
                 }
 
-                {/* {
-                    displaySignUp === false ?
-                        (
-                            <form>
-                            <label className="login">Username:</label>  
-                                <input className="login"></input>
-                                <label className="login">Password:</label>
-                                <input className="login"></input>
-                                <button className="login"
-                                    onClick={handleSubmit}
-                                    >Login
-                                </button>
-                                <p className="login" id="loginLink" 
-                                onClick={handleSignUpClick}
-                                >Don't have an account?
-                                </p>
-                            </form>
-                        )
-                        :
-                        (
-                            <form>
-                                <label className="login">Username:</label>
-                                        <input className="login"></input>
-                                        <label className="login">Password:</label>
-                                        <input className="login"></input>
-                                        <button 
-                                            className="login"
-                                            onClick={handleSignUpClick}
-                                            >Signup
-                                        </button>
-                            </form>
-                        )
-                } */}
             </div>
-
-            {/* {
-                logStatus === false ?
-                (
-                    <div/>
-                )
-                :
-                (
-                <div className="Navbaritems">
-                    <p className="login">You are Logged In</p>
-                    <p className="login" onClick={handleSubmit}>Logout</p>
-                </div>
-                )
-            } */}
-          
-                
 
         </div> 
     )
-            }
+}
 
 export default Navbar;
