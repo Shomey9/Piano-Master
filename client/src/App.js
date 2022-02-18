@@ -8,12 +8,10 @@ import Navbar from './components/Navbar.js';
 
 function App() {
   
-
-
   const [testAnswer, setTestAnswer] = useState("")
   // console.log("testAnswer: ", testAnswer)
   const [userAnswer, setUAnswer] = useState("")
-  // console.log("userAnswer: ", userAnswer)
+  console.log("userAnswer: ", userAnswer)
   const [pressedKey, setPressedKey] = useState(false)
   // console.log("pressedKey: ", pressedKey)
   const [image, setImage] = useState(false)
@@ -36,11 +34,6 @@ function App() {
     const audio = new Audio(
       `${userAnswer.toLowerCase()}.mp3`
     )
-    // audio.duration = 0.2
-    // audio.addEventListener('loadeddata', () => {
-    //   let duration = audio.duration
-    //   duration = 0.2
-    // })
     audio.play();
   }
   if (pressedKey) {
@@ -54,21 +47,21 @@ function App() {
     setTimeout(()=>
     {
         setPressedKey(false)
-    }, 2000
+    }, 1000
     
     )
-    //  
   }
 
-  // if (testAnswer == userAnswer) {
-  //   // setScore(score + 10)
-  //   console.log("Please Record Score")
-  //   // const x = score + 10
-  //   // setScore(x)
-  //   // console.log("Score: ", score)
-  // } else {
-  //   console.log("Please Don't Record Score")
-  // }
+  if (testAnswer == userAnswer) {
+    // setScore(score + 10)
+    
+    console.log("Please Record Score")
+    // const x = score + 10
+    // setScore(x)
+    // console.log("Score: ", score)
+  } else {
+    console.log("Please Don't Record Score")
+  }
 
   // async const recordScore = () => {
   //   const response = await userAnswer
@@ -96,28 +89,22 @@ function App() {
     // console.log("Data from MusicNotes Component: ", musicNotesData)
     setTestAnswer(musicNotesData)
   }
-
-  // async const handleClick = () => {
-  //   setScore(score + 1)
-  //   console.log("score: ", score)
-  // }
-
-  // handleClick().then(score=>setScore(score + 1))
   
   return (
     <div className="App">
       <header className="App-header">
         <Navbar />
         <Scorebox />
-        
+        {/* <p>Score: {score}</p> */}
         <MusicNotes 
           musicNotesData={dataFromMusicNotes}
+          userAnswer={userAnswer}
         />
         <div>
         {
           pressedKey ? 
             <div className="indicator">
-              {/* <p>I am pressed</p> */}
+              
               {testAnswer === userAnswer
                   ?
                   (
@@ -125,7 +112,7 @@ function App() {
                   )
                     :
                   (
-                    <p>Incorrect, note was {testAnswer}!</p>
+                    <p>Incorrect</p>
 
 
                   )
@@ -137,20 +124,11 @@ function App() {
             </div>
 
 
-          // testAnswer === userAnswer 
-          //   ?
-          // (
-          //   <p>Correct!</p>
-          // )
-          //   :
-          // (
-          //   <p>Incorrect!</p>
-          // )
+         
         }
         </div>
         <Piano 
           pianoData={dataFromPiano}
-          // onClick={handleClick}
         />
 
 

@@ -11,9 +11,17 @@ import G from '../notes/G.png';
 import './MusicNotes.css'
 
 function MusicNotes(props) {
-    // console.log(A)
+    
     const [index, setIndex] = useState(0)
     // console.log("index: " , index)
+    const [randomMath, setRandomMath] = useState(Math.random()*7)
+    console.log("randomMath value: ", randomMath)
+    const [toggle, setToggle] = useState(true)
+    // console.log(toggle)
+    const [studentAnswer, setStudentAnswer] = useState("")
+    console.log("Student Answer: ", studentAnswer)
+    const [currentSheetNote, setCurrentSheetNote] = useState("")
+    console.log(" Current Sheet Note: ", currentSheetNote)
 
     const arrayOfNoteImages = [
         C, D, E, F, G, A, B
@@ -22,12 +30,38 @@ function MusicNotes(props) {
         "C", "D", "E", "F", "G", "A", "B"
     ]
 
-    useEffect(() => {
-        const randomIndex = Math.floor(Math.random()*7);
-        setIndex(randomIndex);
-    }, [])
+    useEffect(()=>{
+        setIndex(Math.floor(randomMath))
+        setStudentAnswer(props.userAnswer)
+        setCurrentSheetNote(noteToSend)
+        handleImageChange()
+    })
+
+    const handleImageChange = () => {
+        setToggle(false)
+        // setRandomMath(Math.random()*7)
+        
+
+
+        // if (studentAnswer===currentSheetNote) {
+            // setStudentAnswer("")
+            // setTimeout(()=>{
+                
+            //     setRandomMath(Math.random()*7)
+            // },2000)
+            
+        // } else {
+            // setStudentAnswer("")
+        // }
+    }
+    
+    // if (toggle === false) {
+    //     setRandomMath(Math.random()*7)
+    //     setToggle(true)
+    // } 
 
     
+
     const generateNoteImage = [
         arrayOfNoteImages[index]
     ]
@@ -44,6 +78,7 @@ function MusicNotes(props) {
     
     return (
         <div>
+            {/* <button onClick={handleImageChange}>X</button> */}
             <p>
                 What is this note?
             </p>

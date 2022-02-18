@@ -161,6 +161,27 @@ function Navbar(){
                 <p className="flagItems">Language: </p>
                 <img className="flatItems" src={flag.url} className="flag" alt="flag_image" />
             </div>
+
+            <div>
+            <a 
+                href="https://www.linkedin.com/in/hadyanrendusara/"
+                target="_blank"
+                className="Navbaritems"
+                id="LinkedIn"
+                >LinkedIn
+            </a>
+            </div>
+            
+            <div>
+            <a 
+                href="https://github.com/Shomey9/Piano-Master"
+                target="_blank"
+                className="Navbaritems"
+                id="GitHub"
+                >GitHub
+            </a>
+            </div>
+
             <div>
 
                 {

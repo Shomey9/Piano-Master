@@ -21,6 +21,16 @@
     left: 300px;
     margin-right: 5px;
 }
+#LinkedIn{
+    position: relative;
+    top: 31px;
+    left: 100px;
+}
+#GitHub{
+    position: relative;
+    top: 31px;
+    left: 180px;
+}
 #loginLink{
     position: relative;
     font-size: 15px;
