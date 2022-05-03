@@ -40,4 +40,4 @@ A full-stack application that teaches users how to play a piano through a game v
 Muhammad Rendusara\
 [LinkedIn](https://www.linkedin.com/in/hadyanrendusara/)\
 [GitHub](https://github.com/Shomey9)\
-hadyanrendusara@yahoo.com
+adyrendusara@gmail.com
