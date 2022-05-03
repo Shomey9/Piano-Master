@@ -30,7 +30,7 @@ A full-stack application that teaches users how to play a piano through a game v
    ```sh
    rails s
    ```
-65 Run the frontend
+5. Run the frontend
    ```sh
    npm start --prefix client
    ```
